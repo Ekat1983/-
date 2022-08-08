@@ -8,6 +8,7 @@ public class Book extends Product {
         super(id, name, cost);
         this.author = author;
     }
+
     @Override
     public boolean matches(String query) {
         if (super.matches(query)) {

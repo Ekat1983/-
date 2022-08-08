@@ -1,7 +1,6 @@
 package ru.netology.domain;
 
 
-
 public class ProductRepo {
     private Product[] productsItems = new Product[0];
 
@@ -28,8 +27,7 @@ public class ProductRepo {
     public Product[] findAll() {
         Product[] allResult = new Product[productsItems.length];
         for (int i = 0; i < allResult.length; i++) {
-            int index = 1;
-            allResult[i] = productsItems[index];
+            allResult[i] = productsItems[i];
         }
         return allResult;
     }

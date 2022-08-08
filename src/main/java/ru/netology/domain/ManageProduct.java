@@ -2,24 +2,17 @@ package ru.netology.domain;
 
 public class ManageProduct extends Product {
 
-    private ProductRepo repository;
-    private Product[] products = new Product[0];
+    private final ProductRepo repository;
 
-
-    public void add(Product productItem) {
-        repository.saveProduct(productItem);
-    }
+    public ManageProduct(){ this.repository = new ProductRepo();}
 
     public void save(Product product) {
-        Product[] tmp = new Product[products.length + 1];
-        for (int i = 0; i < products.length; i++) {
-            tmp[i] = products[i];
-        }
-        tmp[tmp.length - 1] = product;
-        products = tmp;
+       repository.saveProduct(product);
     }
 
     public Product searchBy(int id) throws Exception {
+        Product[] products = repository.findAll();
+
         for (int i = 0; i < products.length; i++) {
             if (products[i].getId() == id) {
                 return products[i];
@@ -29,6 +22,6 @@ public class ManageProduct extends Product {
     }
 
     public Product[] findAll() {
-        return products;
+        return repository.findAll();
     }
 }
