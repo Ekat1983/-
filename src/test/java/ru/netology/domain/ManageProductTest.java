@@ -33,4 +33,16 @@ public class ManageProductTest {
         Product[] actual = manager.searchBy("1");
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
+    @Test
+    public void managerNoFoundResults()  {
+        ManageProduct manager = new ManageProduct();
+        manager.save(book1);
+        manager.save(smartphone3);
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("9999");
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
