@@ -24,14 +24,14 @@ public class ManageProductTest {
     }
 
     @Test
-    public void managerSearchBy() throws Exception {
+    public void managerSearchBy() {
         ManageProduct manager = new ManageProduct();
         manager.save(book1);
         manager.save(smartphone3);
 
-        Product[] expected = {book1};
+        int expected = 1;
         Product[] actual = manager.searchBy("1");
-        Assertions.assertArrayEquals(expected, actual);
+        Assertions.assertEquals(expected, actual.length);
     }
 
 
