@@ -16,16 +16,32 @@ public class ManageProduct extends Product {
     public Product[] searchBy(String text) {
         Product[] products = repository.findAll();
 
-        List<Product> productsListResult = new ArrayList<Product>();
+        int currentItemsCount = clearArrayAndGetCountValidItems(products, text);
+        Product[] productsListResult = new Product[currentItemsCount];
 
-        for (int i = 0; i < products.length; i++) {
-            if (products[i].getName().equals(text)) {
-                productsListResult.add(products[i]);
+        for (int i = 0, j = 0; i < products.length; i++){
+            if(products[i] != null){
+                productsListResult[j] = products[i];
+                j++;
             }
         }
 
-       return productsListResult.toArray(new Product[productsListResult.size()]);
+        return productsListResult;
     }
+
+    private int clearArrayAndGetCountValidItems(Product[] products, String text){
+        int counter = 0;
+        for (int i = 0; i < products.length; i++){
+            if(!products[i].getName().equals(text)){
+                products[i] = null;
+                continue;
+            }
+            counter++;
+        }
+        return counter;
+    }
+
+
 
     public Product[] findAll() {
         return repository.findAll();
