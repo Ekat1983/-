@@ -29,9 +29,10 @@ public class ManageProductTest {
         manager.save(book1);
         manager.save(smartphone3);
 
-        int expected = 1;
+        Product[] expected = new Product[]{book1};
+
         Product[] actual = manager.searchBy("1");
-        Assertions.assertEquals(expected, actual.length);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
 
