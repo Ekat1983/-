@@ -37,7 +37,7 @@ public class ManageProductTest {
 
 
     @Test
-    public void managerNoFoundResults()  {
+    public void managerNoFoundResults() {
         ManageProduct manager = new ManageProduct();
         manager.save(book1);
         manager.save(smartphone3);

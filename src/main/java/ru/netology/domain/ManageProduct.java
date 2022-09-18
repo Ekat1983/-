@@ -7,10 +7,12 @@ public class ManageProduct extends Product {
 
     private final ProductRepo repository;
 
-    public ManageProduct(){ this.repository = new ProductRepo();}
+    public ManageProduct() {
+        this.repository = new ProductRepo();
+    }
 
     public void save(Product product) {
-       repository.saveProduct(product);
+        repository.saveProduct(product);
     }
 
     public Product[] searchBy(String text) {
@@ -19,8 +21,8 @@ public class ManageProduct extends Product {
         int currentItemsCount = clearArrayAndGetCountValidItems(products, text);
         Product[] productsListResult = new Product[currentItemsCount];
 
-        for (int i = 0, j = 0; i < products.length; i++){
-            if(products[i] != null){
+        for (int i = 0, j = 0; i < products.length; i++) {
+            if (products[i] != null) {
                 productsListResult[j] = products[i];
                 j++;
             }
@@ -29,10 +31,10 @@ public class ManageProduct extends Product {
         return productsListResult;
     }
 
-    private int clearArrayAndGetCountValidItems(Product[] products, String text){
+    private int clearArrayAndGetCountValidItems(Product[] products, String text) {
         int counter = 0;
-        for (int i = 0; i < products.length; i++){
-            if(!products[i].getName().equals(text)){
+        for (int i = 0; i < products.length; i++) {
+            if (!products[i].getName().equals(text)) {
                 products[i] = null;
                 continue;
             }
@@ -40,7 +42,6 @@ public class ManageProduct extends Product {
         }
         return counter;
     }
-
 
 
     public Product[] findAll() {
